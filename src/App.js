@@ -1,13 +1,12 @@
-import React from 'react';
-import Info from './components/info';
+import React, { Fragment } from 'react';
+import ToDo from './containers/todo/todo';
+import Title from './components/title/title';
 
-class App extends React.Component {
-  render () {
-    return (
-      <div>
-        <Info />
-      </div>
-    );
-  }
-}
+const App = () => (
+  <Fragment>
+    <Title title="ToDo App" />
+    <ToDo />
+  </Fragment>
+)
+
 export default App;
