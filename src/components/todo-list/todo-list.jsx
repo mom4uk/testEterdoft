@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import ToDoItem from '../todo-item/todo-item'
+import ToDoItem from '../todo-item/todo-item';
 
 import './todo-list.css';
 
@@ -14,9 +14,11 @@ const ToDoList = ({ tasksList }) => (
 );
 
 ToDoList.propTypes = {
-  taskList: PropTypes.array,
+  tasksList: PropTypes.array,
 }
-ToDoList.default = {
-  taskList: [],
+
+ToDoList.defaultProps = {
+  tasksList: [],
 }
+
 export default ToDoList;

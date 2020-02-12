@@ -1,8 +1,7 @@
 import React from 'react';
-import PropTypes, { string } from 'prop-types';
+import PropTypes from 'prop-types';
 
 import './todo-item.css';
-import ToDoInput from '../todo-input/todo-input';
 
 const ToDoItem = ({ text, isCompleted }) => (
   <li className="todo-item">
@@ -16,8 +15,10 @@ ToDoItem.propTypes = {
   text: PropTypes.string,
   isCompleted: PropTypes.bool,
 }
-ToDoItem.default = {
+
+ToDoItem.defaultProps = {
   text: '',
   isCompleted: false,
 }
+
 export default ToDoItem;

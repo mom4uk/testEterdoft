@@ -1,5 +1,6 @@
 import React from 'react';
-import PropsTypes from 'prop-types';
+import PropTypes from 'prop-types';
+
 import './footer.css';
 
 const FILTERS_BTN = [
@@ -9,13 +10,14 @@ const FILTERS_BTN = [
   },
   {
     text: 'Active',
-    id: 'active'
+    id: 'active',
   },
   {
-    text: 'Complite',
-    id: 'complite'
+    text: 'Completed',
+    id: 'completed'
   }
 ];
+
 const Footer = ({ amount, activeFilter }) => (
   <div className="footer">
     <span className="amount">{`${amount} Tasks left`}</span>
@@ -28,14 +30,16 @@ const Footer = ({ amount, activeFilter }) => (
       ))}
     </div>
   </div>
-)
+);
 
 Footer.propTypes = {
-  amount: PropsTypes.number,
-  activeFilter: PropsTypes.string,
+  amount: PropTypes.number,
+  activeFilter: PropTypes.string,
 }
-Footer.default = {
+
+Footer.defaultProps = {
   amount: 0,
-  activeFilter: '',
+  activeFilter: 'all',
 }
+
 export default Footer;
