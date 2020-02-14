@@ -5,7 +5,6 @@ import { addTask, removeTask, completeTask } from '../../actions/actionCreator';
 
 import ToDoInput from '../../components/todo-input/todo-input';
 import ToDoList from '../../components/todo-list/todo-list';
-import Footer from '../../components/footer/footer';
 
 import './todo.css';
 
@@ -37,7 +36,7 @@ addTask = ({ key }) => {
 }
 
 render() {
-  const { activeFilter, taskText } = this.state;
+  const { taskText } = this.state;
   const { tasks, removeTask, completeTask } = this.props;
   const isTasksExist = tasks && tasks.length > 0;
 
@@ -45,7 +44,6 @@ render() {
     <div className="todo-wrapper">
       <ToDoInput onKeyPress={this.addTask}onChange={this.handleInputChange} value={taskText}/>
         {isTasksExist && <ToDoList tasksList={tasks} removeTask={removeTask} completeTask={completeTask}/>}
-        {isTasksExist && <Footer amount={tasks.length} activeFilter={activeFilter} />}
       </div>
     );
   }

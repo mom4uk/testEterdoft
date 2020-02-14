@@ -15,7 +15,7 @@ ToDoItem.propTypes = {
   text: PropTypes.string,
   isCompleted: PropTypes.bool,
   removeTask: PropTypes.func,
-  id: PropTypes.string,
+  id: PropTypes.number,
   completeTask: PropTypes.func,
 }
 
