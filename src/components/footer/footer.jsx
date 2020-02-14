@@ -25,7 +25,7 @@ const Footer = ({ amount, activeFilter }) => (
       {FILTERS_BTN.map(({ text, id }) => (
         <button
           key={id}
-          className={id === activeFilter ? "filter-btn active" : 'filter-btn'}
+          className={id === activeFilter ? 'filter-btn active' : 'filter-btn'}
         >{text}</button>
       ))}
     </div>

@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import { addTask, removeTask, completeTask } from '../../actions/actionCreator';
 
 import ToDoInput from '../../components/todo-input/todo-input';
 import ToDoList from '../../components/todo-list/todo-list';
@@ -6,43 +9,48 @@ import Footer from '../../components/footer/footer';
 
 import './todo.css';
 
-const TASKS = [
-  {
-    id: 1,
-    text: 'Learn ReactJS',
-    isCompleted: true,
-  },
-  {
-    id: 2,
-    text: 'Learn Redux',
-    isCompleted: false,
-  },
-  {
-    id: 3,
-    text: 'Learn React Router',
-    isCompleted: false,
-  }
-];
-
 class ToDo extends Component {
 
   state = {
     activeFilter: 'all',
+    taskText: '',
   }
 
-  render() {
-    const { activeFilter } = this.state;
-    const tasksList = TASKS;
-    const isTasksExist = tasksList && tasksList.length > 0;
+handleInputChange = ({ target: {value} }) => {
+  this.setState({
+    taskText: value,
+  })
+}
 
-    return (
-      <div className="todo-wrapper">
-        <ToDoInput />
-        {isTasksExist && <ToDoList tasksList={tasksList} />}
-        {isTasksExist && <Footer amount={tasksList.length} activeFilter={activeFilter} />}
+addTask = ({ key }) => {
+  const { taskText } = this.state;
+
+  if (taskText.length > 3 && key === 'Enter') {
+    const { addTask } = this.props;
+
+    addTask((new Date()).getTime(), taskText, false);
+
+    this.setState({
+      taskText: '',
+    })
+  }
+}
+
+render() {
+  const { activeFilter, taskText } = this.state;
+  const { tasks, removeTask, completeTask } = this.props;
+  const isTasksExist = tasks && tasks.length > 0;
+
+  return (
+    <div className="todo-wrapper">
+      <ToDoInput onKeyPress={this.addTask}onChange={this.handleInputChange} value={taskText}/>
+        {isTasksExist && <ToDoList tasksList={tasks} removeTask={removeTask} completeTask={completeTask}/>}
+        {isTasksExist && <Footer amount={tasks.length} activeFilter={activeFilter} />}
       </div>
     );
   }
 }
 
-export default ToDo;
+export default connect(state => ({
+  tasks: state.tasks,
+}), { addTask, removeTask, completeTask })(ToDo);
