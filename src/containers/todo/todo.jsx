@@ -19,7 +19,7 @@ const TASKS = [
   },
   {
     id: 3,
-    text: 'Learn Front',
+    text: 'Learn React Router',
     isCompleted: false,
   }
 ];
