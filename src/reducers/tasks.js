@@ -30,9 +30,9 @@ const tasks = (state = TASKS.tasks, { id, text, isCompleted, type}) => {
       });
     case EDIT_TASK:
       return [...state].map(task => {
-        let newText = '';
+        console.log(task.text)
         if (task.id === id) {
-          task.text = newText;
+          task.text = task.newTextTask;
         }
         return task;
       });

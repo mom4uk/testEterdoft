@@ -12,7 +12,8 @@ import './todo.css';
 class ToDo extends Component {
 
   state = {
-    taskText: ''
+    taskText: '',
+    editTaskText: ''
   }
 
 handleInputChange = ({ target: { value } }) => {
@@ -21,15 +22,15 @@ handleInputChange = ({ target: { value } }) => {
   })
 }
 
-editInputChange = ({ target: { valueTaskInList } }) => {
+editInputChange = ({ target: { valueInputForChange } }) => {
   this.setState({
-    taskText: valueTaskInList
+    taskText: valueInputForChange
   })
 }
 
 addTask = ({ key }) => {
   const { taskText } = this.state;
-
+console.log(taskText)
   if (taskText.length > 2 && key === 'Enter') {
     const { addTask } = this.props;
 
@@ -41,34 +42,31 @@ addTask = ({ key }) => {
   }
 }
 
-editTask = () => {
-  const { valueTaskInList, taskText, id } = this.state;
-
-  if (taskText.length > 2) {
+editTask = ({ key }, id) => {
+  const { editTaskText } = this.state;
+  if (editTaskText.length > 0 && key === 'Enter') {
     const { editTask } = this.props;
 
-    editTask(id, valueTaskInList);
+    editTask(id, editTaskText);
 
     this.setState({
-      taskText: 'Изменение'
+      editTaskText: ''
     })
   }
 }
 
 render() {
   const { taskText } = this.state;
-  const { tasks, removeTask, completeTask, editTask } = this.props;
+  const { tasks, removeTask, completeTask} = this.props;
   const isTasksExist = tasks && tasks.length > 0;
-
   return (
     <div className="todo-wrapper">
       <ToDoInput onKeyPress={this.addTask} onChange={this.handleInputChange} value={taskText} />
         {isTasksExist &&
           <ToDoList
-          valueTaskInList ={taskText}
-          onClick={this.editTask}
+          valueInputForChange={this.editTaskText}
+          onKeyPress={this.editTask}
           onChange={this.editInputChange}
-          editTask ={editTask}
           tasksList={tasks}
           removeTask={removeTask}
           completeTask={completeTask}
