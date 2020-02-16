@@ -56,7 +56,7 @@ editTask = ({ key }, id) => {
 }
 
 render() {
-  const { taskText } = this.state;
+  const { taskText, editTaskText } = this.state;
   const { tasks, removeTask, completeTask} = this.props;
   const isTasksExist = tasks && tasks.length > 0;
   return (
@@ -64,7 +64,7 @@ render() {
       <ToDoInput onKeyPress={this.addTask} onChange={this.handleInputChange} value={taskText} />
         {isTasksExist &&
           <ToDoList
-          valueInputForChange={this.editTaskText}
+          valueInputForChange={editTaskText}
           onKeyPress={this.editTask}
           onChange={this.editInputChange}
           tasksList={tasks}
