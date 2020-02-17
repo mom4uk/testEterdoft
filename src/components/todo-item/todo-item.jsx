@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './todo-item.css';
 
 
-const ToDoItem = ({ text, isCompleted, removeTask, id, completeTask, onChange, onKeyPress, valueInputForChange }) => (
+const ToDoItem = ({ text, isCompleted, removeTask, id, completeTask, onChange, onKeyPress, value }) => (
   <li className="todo-item">
     <i onClick={() => completeTask(id)} className={isCompleted ? 'mark far fa-check-circle' : 'mark far fa-circle'} />
     <span className={isCompleted ? 'completed text' : 'text'}>{text}</span>
@@ -12,13 +12,12 @@ const ToDoItem = ({ text, isCompleted, removeTask, id, completeTask, onChange, o
         className="todo-input-item"
         placeholder="Click to edit task"
         onChange={onChange}
-        valueInputForChange={valueInputForChange}
+        value={value}
         onKeyPress={onKeyPress} 
         />
     <i onClick={() => removeTask(id)} className="fas fa-times" />
   </li>
 );
-
 ToDoItem.propTypes = {
   text: PropTypes.string,
   isCompleted: PropTypes.bool,
@@ -34,7 +33,7 @@ ToDoItem.defaultProps = {
   text: '',
   isCompleted: false,
   removeTask: () => {},
-  id: '',
+  id: 0,
   completeTask: () => {},
   onKeyPress: () => {},
   onChange: () => {},

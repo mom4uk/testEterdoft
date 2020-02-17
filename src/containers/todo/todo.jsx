@@ -22,15 +22,15 @@ handleInputChange = ({ target: { value } }) => {
   })
 }
 
-editInputChange = ({ target: { valueInputForChange } }) => {
+editInputChange = ({ target: { value } }) => {
   this.setState({
-    taskText: valueInputForChange
+    editTaskText: value
   })
 }
 
 addTask = ({ key }) => {
   const { taskText } = this.state;
-console.log(taskText)
+console.log(taskText);
   if (taskText.length > 2 && key === 'Enter') {
     const { addTask } = this.props;
 
@@ -44,6 +44,7 @@ console.log(taskText)
 
 editTask = ({ key }, id) => {
   const { editTaskText } = this.state;
+  console.log(editTaskText);
   if (editTaskText.length > 0 && key === 'Enter') {
     const { editTask } = this.props;
 
@@ -64,7 +65,7 @@ render() {
       <ToDoInput onKeyPress={this.addTask} onChange={this.handleInputChange} value={taskText} />
         {isTasksExist &&
           <ToDoList
-          valueInputForChange={editTaskText}
+          value={editTaskText}
           onKeyPress={this.editTask}
           onChange={this.editInputChange}
           tasksList={tasks}

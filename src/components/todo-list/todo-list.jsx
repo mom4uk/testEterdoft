@@ -5,11 +5,11 @@ import ToDoItem from '../todo-item/todo-item';
 
 import './todo-list.css';
 
-const ToDoList = ({ tasksList, removeTask, completeTask, onChange, valueInputForChange, onKeyPress }) => (
+const ToDoList = ({ tasksList, removeTask, completeTask, onChange, value, onKeyPress }) => (
   <ul className="todo-list">
     {tasksList.map(({ id, text, isCompleted }) => (
       <ToDoItem
-        valueInputForChange={valueInputForChange}
+        value={value}
         onChange={onChange}
         onKeyPress={onKeyPress}
         completeTask={completeTask} 
@@ -28,7 +28,8 @@ ToDoList.propTypes = {
   removeTask: PropTypes.func,
   completeTask: PropTypes.func,
   editTask: PropTypes.func,
-  valueInputForChange: PropTypes.string
+  value: PropTypes.string,
+  id: PropTypes.number
 }
 
 ToDoList.defaultProps = {
@@ -36,7 +37,8 @@ ToDoList.defaultProps = {
   removeTask: () => {},
   completeTask: () => {},
   editTask: () => {},
-  valueInputForChange: ''
+  value: '',
+  id: 0
 }
 
 export default ToDoList;
