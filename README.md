@@ -11,3 +11,8 @@
     Пользователь не может редактировать задачи
     После обновления страницы выполненные задачи не исчезают из списка
     Не адаптировано под мобильные устройства
+### Install
+    git clone https://github.com/mom4uk/testEtersoft.git
+    cd testEtersoft
+    make install
+    make start
