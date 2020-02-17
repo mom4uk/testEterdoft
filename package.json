@@ -1,7 +1,17 @@
 {
   "name": "testetersoft",
-  "version": "0.1.0",
-  "private": false,
+  "version": "1.0.0",
+  "description": "Test for Etersoft",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mom4uk/testEtersoft.git"
+  },
+  "author": "manovmikhail",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mom4uk/testEtersoft/issues"
+  },
+  "homepage": "https://github.com/mom4uk/testEtersoft#readme",
   "dependencies": {
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
