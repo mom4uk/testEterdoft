@@ -29,10 +29,10 @@ const tasks = (state = TASKS.tasks, { id, text, isCompleted, type}) => {
         return task;
       });
     case EDIT_TASK:
-      return [...state].map(task => {
+      return [...state, { text }].map(task => {
         console.log(task.text)
         if (task.id === id) {
-          task.text = task.newTextTask;
+          task.text = text;
         }
         return task;
       });
